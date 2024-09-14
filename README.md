@@ -15,12 +15,13 @@ The data we will be analyzing will be from Kaggle.com. We will be analyzing the 
 
 See the sample chart below  of percentages of wealth per each industry described in the dataset
 
-!Net Worth Distribution by Industry
+!Piechart Image
 
 ### From here we can see that Technology is the most lucrative of indsutries to immerse oneself in... I guess it's a lucky thing that we're studying Data Science! 
 
-### The summary statistics are as follows: 
+### See the profiling report generated through ydata_profiling. 
 
+file:///C:/Users/uzoma/Uzo_Uwaz-MiniProject2/profile.html
 
 
 
