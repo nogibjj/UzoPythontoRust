@@ -13,15 +13,17 @@ The data we will be analyzing will be from Kaggle.com. We will be analyzing the 
 
 ## FINDINGS
 
-See the sample chart below  of percentages of wealth per each industry described in the dataset
-
-!Piechart Image
+See the sample chart below  of percentages of wealth per each industry described in the dataset in Piechart Image.png
 
 ### From here we can see that Technology is the most lucrative of indsutries to immerse oneself in... I guess it's a lucky thing that we're studying Data Science! 
 
-### See the profiling report generated through ydata_profiling. 
+### The summary Statistics are as follows 
+mean = 102 billion in networth 
+std = 56 billion from mean 
+min networth = 1.57 billion
+max networth = 199 billion 
 
-file:///C:/Users/uzoma/Uzo_Uwaz-MiniProject2/profile.html
+
 
 
 
