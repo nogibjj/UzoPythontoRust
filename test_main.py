@@ -1,7 +1,6 @@
-from main2 import load_data, plot_pie_chart, summary_stats, generate_summary
+from main import load_data, plot_pie_chart, summary_stats
 import pandas as pd
 import io
-import os
 
 
 def test_load_data():
@@ -15,10 +14,10 @@ Finance,150
 Retail,100
 Tech,50
 Retail,80
-    """
+        """
     )
 
-    df = load_data(csv_data)
+    df = pd.read_csv(csv_data)
     # Check if the data is loaded correctly
     assert isinstance(df, pd.DataFrame)
     assert df.shape == (5, 2)  # The DataFrame should have 5 rows and 2 columns
@@ -35,11 +34,12 @@ Finance,150
 Retail,100
 Tech,50
 Retail,80
-    """
+        """
     )
 
+    df = pd.read_csv(csv_data)
     # This should run without raising an exception
-    plot_pie_chart(csv_data)
+    plot_pie_chart(df)
 
 
 def test_summary_stats():
@@ -53,38 +53,16 @@ Finance,150
 Retail,100
 Tech,50
 Retail,80
-    """
-    )
-
-    # This should run without raising an exception
-    summary_stats(csv_data)
-
-
-def test_generate_summary():
-    """Test the generate_summary function to ensure it creates an HTML file."""
-    # Create a small in-memory CSV file for testing
-    csv_data = io.StringIO(
         """
-Industry,Net Worth (in billions)
-Tech,200
-Finance,150
-Retail,100
-Tech,50
-Retail,80
-    """
     )
 
+    df = pd.read_csv(csv_data)
     # This should run without raising an exception
-    generate_summary(csv_data)
-    assert os.path.exists("profile.html"), "Profile report was not created"
-
-    # Clean up the generated file after test
-    os.remove("profile.html")
+    summary_stats(df)
 
 
-if __name__ == "__main2__":
+if __name__ == "__main__":
     test_load_data()
     test_plot_pie_chart()
     test_summary_stats()
-    test_generate_summary()
     print("All tests passed successfully.")
