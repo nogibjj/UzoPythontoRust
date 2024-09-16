@@ -32,20 +32,21 @@ def summary_stats(data_frame):
 
 
 def grab_mean(data_frame, col):
+    """This function is meant to grab the mean from the summary stats"""
     return data_frame[col].mean()
 
 
 def grab_min(data_frame, col):
+    """This function is meant to grab the minimum networth from the summary stats"""
     return data_frame[col].min()
 
 
 def grab_std(data_frame, col):
+    "This function is meant to grab the standard deviation from the summary stats"
     return data_frame[col].std()
 
 
-# Example usage
-if __name__ == "__main__":
-    csv_file = "Top_1000_wealthiest_people.csv"
-    data_frame = load_data(csv_file)
-    plot_pie_chart(data_frame)
-    summary_stats(data_frame)
+csv_file = "Top_1000_wealthiest_people.csv"
+data_frame = load_data(csv_file)
+plot_pie_chart(data_frame)
+summary_stats(data_frame)
