@@ -1,7 +1,7 @@
+"""This code is for main.py it reads a dataset and prints some summary info about it !"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
-
-csv_file = "Top_1000_wealthiest_people.csv"
 
 
 # Function to load data from a CSV file
@@ -44,6 +44,8 @@ def grab_std(df, col):
 
 
 # Example usage
-df = load_data(csv_file)
-plot_pie_chart(df)
-summary_stats(df)
+if __name__ == "__main__":
+    csv_file = "Top_1000_wealthiest_people.csv"
+    df = load_data(csv_file)
+    plot_pie_chart(df)
+    summary_stats(df)
