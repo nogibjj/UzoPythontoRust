@@ -1,13 +1,16 @@
-"""This code is for main.py it reads a dataset and prints some summary info about it !"""
+"""This code is for main.py; it reads a dataset and prints some summary info about it!"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Constant for the CSV file path
+CSV_FILE = "Top_1000_wealthiest_people.csv"
+
 
 # Function to load data from a CSV file
-def load_data(csv_file):
+def load_data():
     """This function loads data from a CSV file."""
-    data_frame = pd.read_csv(csv_file)
+    data_frame = pd.read_csv(CSV_FILE)
     return data_frame
 
 
@@ -32,21 +35,27 @@ def summary_stats(data_frame):
 
 
 def grab_mean(data_frame, col):
-    """This function is meant to grab the mean from the summary stats"""
+    """This function is meant to grab the mean from the summary stats."""
     return data_frame[col].mean()
 
 
 def grab_min(data_frame, col):
-    """This function is meant to grab the minimum networth from the summary stats"""
+    """This function is meant to grab the minimum net worth from the summary stats."""
     return data_frame[col].min()
 
 
 def grab_std(data_frame, col):
-    "This function is meant to grab the standard deviation from the summary stats"
+    """This function is meant to grab the standard deviation from the summary stats."""
     return data_frame[col].std()
 
 
-csv_file = "Top_1000_wealthiest_people.csv"
-data_frame = load_data(csv_file)
-plot_pie_chart(data_frame)
-summary_stats(data_frame)
+def mini_project_2():
+    """This function runs the main workflow."""
+    data_frame = load_data()
+    plot_pie_chart(data_frame)
+    summary_stats(data_frame)
+
+
+# Run the main workflow
+if __name__ == "__main__":
+    mini_project_2()
