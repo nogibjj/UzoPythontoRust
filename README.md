@@ -14,7 +14,7 @@ The data we will be analyzing will be from Kaggle.com. We will be analyzing the 
 ## FINDINGS
 
 See the sample chart below  of percentages of wealth per each industry described in the dataset 
-![Alt Text](./Piechart\Image.png)
+![Alt Text](./Piechart\ Image.png)
 
 ### From here we can see that Technology is the most lucrative of indsutries to immerse oneself in... I guess it's a lucky thing that we're studying Data Science! 
 
