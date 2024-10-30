@@ -1,0 +1,22 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "wealth_data_analyzer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# CSV reading and writing
+csv = "1.1.6"
+
+# Data frame operations similar to Pandas in Python
+polars = "0.29.0"
+
+# Plotting library
+plotters = { version = "0.3.7", features = ["bitmap_encoder"] }
+
+# Error handling and utilities
+anyhow = "1.0"  # Optional: For better error handling
+
+[dev-dependencies]
+tempfile = "3.3.0"  # For creating temporary files in tests
