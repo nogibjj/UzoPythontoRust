@@ -1,3 +1,5 @@
+[![CI](https://github.com/nogibjj/UzoPythontoRust/actions/workflows/ci.yml/badge.svg)](https://github.com/nogibjj/UzoPythontoRust/actions/workflows/ci.yml)
+
 ## Uzo_Uwaz-MiniProject8
  IDS 706 Week 8 : This is a recreation Week 2 Mini Project of Reading and Describing a Dataset. It establishes an environment on codespaces and uses Github Actinos to run a Makefile for : make install, make test, make format, and make lint. It loads the Top Wealthiest data set from Kaggler and runs a function to generate a pie chart as well as some summary statistics about the data. We utilized Rust to convert this code to a much faster format ! 
 
