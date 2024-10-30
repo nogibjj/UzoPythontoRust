@@ -1,7 +1,8 @@
 """This code is for main.py; it reads a dataset and prints some summary info about it!"""
 
-from mylib.utils import mini_project_2
+from mylib.utils import mini_project_2, calculate_time_memory
 
+CSV_FILE = "Top_1000_wealthiest_people.csv"
 
 # # Function to load data from a CSV file
 # def load_data():
@@ -55,3 +56,4 @@ from mylib.utils import mini_project_2
 # Run the main workflow
 if __name__ == "__main__":
     mini_project_2()
+    calculate_time_memory(CSV_FILE)

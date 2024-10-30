@@ -1,6 +1,9 @@
 use polars::prelude::*;
 use std::fs::File;
 use std::error::Error;
+use std::time::Instant;
+use std::process;
+use sysinfo::{Pid, Process, System, SystemExt, ProcessExt};  // Import ProcessExt for memory method
 
 // Constant for the CSV file path
 const CSV_FILE: &str = "Top_1000_wealthiest_people.csv";
@@ -51,21 +54,42 @@ fn calculate_std_dev(series: &Series) -> f64 {
     }
 }
 
+// Function to measure time and memory usage for executing a function
+fn calculate_time_memory<F>(function: F) -> (i64, f64)
+where
+    F: FnOnce(),
+{
+    // Record the start time
+    let start_time = Instant::now();
 
-// Function to grab the mean of a specific column
-fn grab_mean(df: &DataFrame, col: &str) -> Option<f64> {
-    df.column(col).ok()?.mean()
-}
+    // Set up system information to measure initial resource usage
+    let mut system = System::new_all();
+    system.refresh_all();
+    
+    // Measure initial memory usage
+    let start_mem_usage = system
+        .process(Pid::from(process::id() as usize))  // Cast process::id() to usize
+        .expect("Failed to get current process")
+        .memory();  // Memory in kilobytes
 
-// Function to grab the minimum of a specific column
-fn grab_min(df: &DataFrame, col: &str) -> Option<f64> {
-    df.column(col).ok()?.min()
-}
+    // Execute the function to measure
+    function();
 
-// Function to grab the standard deviation of a specific column
-fn grab_std(df: &DataFrame, col: &str) -> Option<f64> {
-    let series = df.column(col).ok()?;
-    Some(calculate_std_dev(series))
+    // Refresh system information and measure final memory usage
+    system.refresh_all();
+    let end_mem_usage = system
+        .process(Pid::from(process::id() as usize))  // Cast process::id() to usize
+        .expect("Failed to get current process")
+        .memory();  // Memory in kilobytes
+
+    // Calculate elapsed time and memory change
+    let elapsed_time = start_time.elapsed().as_secs_f64();
+    let memory_change = end_mem_usage as i64 - start_mem_usage as i64;
+
+    println!("Elapsed Time: {:.7} seconds", elapsed_time);
+    println!("Memory Usage Change: {} kilobytes", memory_change);
+
+    (memory_change, elapsed_time)
 }
 
 // Main workflow function
@@ -90,9 +114,31 @@ fn mini_project_2() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+// Helper functions for specific column statistics
+fn grab_mean(df: &DataFrame, col: &str) -> Option<f64> {
+    df.column(col).ok()?.mean()
+}
+
+fn grab_min(df: &DataFrame, col: &str) -> Option<f64> {
+    df.column(col).ok()?.min()
+}
+
+fn grab_std(df: &DataFrame, col: &str) -> Option<f64> {
+    let series = df.column(col).ok()?;
+    Some(calculate_std_dev(series))
+}
+
+// Main function
 fn main() {
-    if let Err(e) = mini_project_2() {
-        eprintln!("Error: {}", e);
-    }
+    // Measure the time and memory of the mini_project_2 function
+    let (mem_usage, elapsed_time) = calculate_time_memory(|| {
+        if let Err(e) = mini_project_2() {
+            eprintln!("Error: {}", e);
+        }
+    });
+
+    // Optionally print the results outside of the function
+    println!("Total Memory Change: {} kilobytes", mem_usage);
+    println!("Total Elapsed Time: {:.7} seconds", elapsed_time);
 }
 

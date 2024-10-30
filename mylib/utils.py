@@ -2,6 +2,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import time
+import psutil
 
 CSV_FILE = (
     os.path.join(os.path.dirname(__file__), "Top_1000_wealthiest_people.csv")
@@ -56,6 +58,38 @@ def mini_project_2():
     data_frame = load_data()
     plot_pie_chart(data_frame)
     summary_stats(data_frame)
+
+
+def calculate_time_memory(path):
+    """Function to calculate runtime and memory usage for loading and processing data."""
+
+    # Record the start time
+    start_time = time.time()
+
+    # Measure the initial resource usage
+    process = psutil.Process()
+    start_mem_usage = process.memory_info().rss  # in bytes
+
+    # Load data and compute summary statistics
+    data = load_data()
+    summary_stats(data)
+
+    # Record the end time
+    end_time = time.time()
+
+    # Measure the final resource usage
+    end_mem_usage = process.memory_info().rss  # in bytes
+
+    # Calculate the elapsed time
+    elapsed_time = end_time - start_time
+
+    # Convert memory usage from bytes to kilobytes
+    memory_change = (end_mem_usage - start_mem_usage) / 1024
+
+    print(f"Python-Elapsed Time: {elapsed_time:.7f} seconds")
+    print(f"Python-Memory Usage Change: {memory_change:.2f} kilobytes")
+
+    return memory_change, elapsed_time
 
 
 # if __name__ == "__main__":

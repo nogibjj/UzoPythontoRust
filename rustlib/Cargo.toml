@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 # CSV reading and writing
 csv = "1.1.6"
+sysinfo = "0.27" # for runtime and memory usage calcs !
 
 # Data frame operations similar to Pandas in Python
 polars = "0.25.0"
@@ -17,4 +18,5 @@ polars-arrow = "0.20"
 anyhow = "1.0"  # Optional: For better error handling
 
 [dev-dependencies]
-tempfile = "3.3.0"  # For creating temporary files in tests
+tempfile = "3.3.0"  # For creating temporary files in 
+

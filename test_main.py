@@ -1,4 +1,4 @@
-from mylib.utils import plot_pie_chart, summary_stats
+from mylib.utils import load_data, plot_pie_chart, summary_stats, calculate_time_memory
 import pandas as pd
 import io
 
@@ -59,6 +59,12 @@ Retail,80
     df = pd.read_csv(csv_data)
     # This should run without raising an exception
     summary_stats(df)
+
+
+def test_calculate_time_memory():
+    data = load_data()
+    result = calculate_time_memory(data)
+    assert result is not None, "Test has failed."
 
 
 if __name__ == "__main__":

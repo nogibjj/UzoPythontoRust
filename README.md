@@ -3,7 +3,7 @@
 
 The data we will be analyzing will be from Kaggle.com. We will be analyzing the top 1000 wealthiest people in the world. (https://www.kaggle.com/datasets/muhammadehsan02/top-1000-wealthiest-people-in-the-world)
 
-## Rust Implementation:
+## Rust Implementation :ballot_box_with_check: 
 
 ### Preparation and Dependency Installation: 
 1. Install Rust : in bash : `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
@@ -31,14 +31,6 @@ This python version uses libraries like pandas to read a csv and matplotlib for 
 2. Lint code `make python_lint`
 3. Test coce `make python_test`
 
-## Speed and Resource Usage:
-[Link to Rust runtime Markdown File](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week8/blob/main/rust_times.md)
-[Link to Python runtime Markdown File](https://github.com/nogibjj/Jeremy_Tan_IDS706_Week8/blob/main/python_times.md)
-
-You can view how long it takes to encrypt and decrypt the same messages above. Based on the speed, it's obvious Rust run on average 400 times faster than Python and we can infer why the resource usage is vastly smaller than Python. Rust outperforms Python in speed primarily due to its static typing, zero-cost abstractions, and absence of a Global Interpreter Lock (GIL). Rust's strict typing allows for more efficient compilation, while its ownership system enables high-performance abstractions without sacrificing safety. Additionally, Rust manages memory directly, avoiding the overhead of Python's garbage collector. The language also offers fine-grained control over memory, enabling low-level optimizations. These factors, combined with an optimized compiler and a performance-centric standard library, contribute to Rust's reputation for speed.
-
-I also track the memory used in Rust and Python in the markdown files above. We can see that Rust barely uses memory whereas Python requires mb of memory for the same encryption and decryption to run.
-
 ## FINDINGS
 
 See the sample chart below  of percentages of wealth per each industry described in the dataset 
@@ -46,12 +38,27 @@ See the sample chart below  of percentages of wealth per each industry described
 
 ### From here we can see that Technology is the most lucrative of indsutries to immerse oneself in... I guess it's a lucky thing that we're studying Data Science! 
 
-### The summary Statistics are as follows 
+## :ballot_box_with_check: The summary Statistics are as follows 
 mean = 102 billion in networth 
 std = 56 billion from mean 
 min networth = 1.57 billion
 max networth = 199 billion 
 
+## Takeaways
+We see that Rust is much faster than python. However due to a rather strict compiler Rust is much more limited in its capabilities for now. In this project I was unable to create a piechart due to a rather complicated Plotter library that I would rather not deal with. Rust is so powerful though because with a package as powerful as Cargo. You can ensure `build` , `run` and `test` all work directly from the command line. 
+
+
+## Speed and Resource Usage:
+
+| Metric           | Rust                          | Python                        |
+|------------------|-------------------------------|-------------------------------|
+| **Memory Usage** | 5476352 kilobytes                  | 232.00 Kilobytes           |
+| **Runtime**      | 1.5631420 seconds        | 0.0370762 seconds          |
+
+
+- **Memory Efficiency**: Python uses ~98% less memory, making it more suitable for small-scale tasks. Python’s garbage collector automatically     reclaims memory, which can sometimes appear more efficient if the Rust code is not optimized for memory management.
+- **Execution Speed**: Python is faster due to lower overhead, while Rust's extra time comes from system-level operations. Python can also be more optimized for execution speed using native libraries. 
+- **Use Case**: Python is ideal for small tasks, while Rust shines in larger, more complex, or resource-heavy scenarios. Ultimately, Python libraries offer high-level abstractions and efficient algorithms for common tasks (e.g., matrix multiplication in NumPy), which can make the Python script appear faster and more memory-efficient.
 
 
 
