@@ -10,10 +10,8 @@ edition = "2021"
 csv = "1.1.6"
 
 # Data frame operations similar to Pandas in Python
-polars = "0.29.0"
-
-# Plotting library
-plotters = { version = "0.3.7", features = ["bitmap_encoder"] }
+polars = "0.25.0"
+polars-arrow = "0.20"
 
 # Error handling and utilities
 anyhow = "1.0"  # Optional: For better error handling
